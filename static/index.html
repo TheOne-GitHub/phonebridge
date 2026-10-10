@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhoneBridge</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <h1>PhoneBridge</h1>
+      <span id="url" class="url" title="Server address"></span>
+      <span id="status" class="dot" title="Not connected"></span>
+    </div>
+    <div class="controls">
+      <form id="tokenForm" class="token-form">
+        <input id="tokenInput" type="password" placeholder="Token from a-Shell" autocomplete="off" spellcheck="false" aria-label="Token">
+        <button type="submit">Connect</button>
+      </form>
+      <button id="tokenEdit" class="ghost" type="button" hidden>Change token</button>
+      <button id="refresh" class="ghost" type="button" title="Refresh">&#x21bb; Refresh</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="files" role="tab" aria-selected="true">Files</button>
+    <button class="tab" data-tab="clip" role="tab" aria-selected="false">Clipboard</button>
+  </nav>
+
+  <main>
+    <section id="files" class="panel">
+      <div class="files-top">
+        <nav id="crumbs" class="crumbs" aria-label="Folder path"></nav>
+        <label class="btn">
+          Upload
+          <input id="picker" type="file" multiple hidden>
+        </label>
+      </div>
+      <div id="drop" class="drop">
+        <div id="list" class="list"></div>
+        <div class="drop-hint">Drop files here to upload</div>
+      </div>
+      <div id="progress" class="progress" hidden><div id="progressBar"></div><span id="progressText"></span></div>
+    </section>
+
+    <section id="clip" class="panel" hidden>
+      <textarea id="clipText" placeholder="Pull the phone's clipboard, or type here and push it to the phone." spellcheck="false"></textarea>
+      <div class="clip-actions">
+        <button id="pull" type="button">Pull from phone</button>
+        <button id="push" type="button">Push to phone</button>
+        <span id="synced" class="muted">Not synced yet</span>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>
